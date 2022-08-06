@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7bf0e3e20b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../static/css/desbord.css">
+    <link rel="stylesheet" href="../static/css/customerKYC.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/modal.css">
+    <!-- <link rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/loan.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/styles.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/CM.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/Credit.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/CR.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/ACM.css"> -->
+    <link rel="stylesheet" href="../static/css/cross.css">
+    <!-- <link rel="stylesheet" href="../static/css/addcross.css"> -->
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="left-side">
+            <li><a href="#" onclick="openSlideMenu()"><i class="fa-solid fa-bars"></i></a></li>
+            <li>
+                <a href="#">
+                    <h2>GlowWay</h2>
+            </li>
+        </div>
+        <nav>
+            <ul class="nav_links">
+
+
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-book"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-bars-progress"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-user"></i>
+                        <span>{{user}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <abbr title="Session Time">
+                         <div class="time" >
+                             <!-- for time -->
+                             <div class="hms"></div>
+                     
+                             <!-- for AM/PM -->
+                             <div class="ampm"></div>
+                             
+                         </div>
+                     </abbr>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+
+        <div class="menu">
+            <div class="item"><a class="sub-btn">Transaction </a>
+                <div class="sub-menu">
+                    <a href="{% url 'customerKYC' %}">Customer KYC</a>
+                    <a href="{% url 'loanCalculator' %}">Loan Calculator</a>
+                </div>
+            </div>
+
+            <div class="item"><a class="sub-btn">Reports</a>
+                <div class="sub-menu">
+                </div>
+            </div>
+            <div class="item"><a href="{% url 'signin' %}" class="sub-btn logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>

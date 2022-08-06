@@ -1,0 +1,179 @@
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function preventBack() {
+            window.history.forward();
+        }
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload = function() {
+            null
+        };
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7bf0e3e20b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../static/css/desbord.css">
+    <link rel="stylesheet" href="../static/css/customerKYC.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <!-- <link rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/loan.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/styles.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/CM.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/Credit.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/CR.css"> -->
+    <!-- <link rel="stylesheet" href="../static/css/ACM.css"> -->
+    <link rel="stylesheet" href="../static/css/cross.css">
+    <!-- <link rel="stylesheet" href="../static/css/addcross.css"> -->
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="left-side">
+            <li><a href="#" onclick="openSlideMenu()"><i class="fa-solid fa-bars"></i></a></li>
+            <li>
+                <a href="{% url 'desbord' %}">
+                    <h2>GlowWay</h2>
+                </a>
+            </li>
+        </div>
+        <nav>
+            <ul class="nav_links">
+
+
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-book"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-bars-progress"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-user"></i>
+                        <span>{{user}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <abbr title="Session Time">
+                         <div class="time" >
+                             <!-- for time -->
+                             <div class="hms"></div>
+                     
+                             <!-- for AM/PM -->
+                             <div class="ampm"></div>
+                             
+                         </div>
+                     </abbr>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+
+        <div class="menu">
+            <div class="item"><a class="sub-btn">Admin</a>
+                <div class="sub-menu">
+
+                    <a href="{% url 'region' %}">Create new region</a>
+                    <a href="{% url 'region_view' %}">View Regions</a>
+                    <a href="{% url 'zone' %}">Create new zone</a>
+                    <a href="{% url 'zone_view' %}">View Zone</a>
+                    <a href="{% url 'center' %}">Create new center</a>
+                    <a href="{% url 'Agent_user' %}">Create new Agent</a>
+                    <a href="{% url 'Agent' %}">Assigned Branch to Agent</a>
+                    <a href="{% url 'center_ID' %}">Create new center ID for Agent</a>
+                </div>
+            </div>
+            <div class="item"><a class="sub-btn">Transaction </a>
+                <div class="sub-menu">
+
+                    <a href="{% url 'center_meeting' %}">Centre Meeting</a>
+                    <a href="{% url 'collection_reverse' %}">Collection Reverse</a>
+                    <a href="{% url 'cross_sell_cash_sell' %}">Cross Sell Cash Sell</a>
+                    <a href="{% url 'Credit_Bureau_Check' %}">Customer Credit Bureau</a>
+                    <a href="{% url 'branchDayClose' %}">Day Close</a>
+                    <a href="#">Death Cases</a>
+                    <a href="#">Hospi Cash Claim</a>
+                    <a href="{% url 'loan' %}">Loan Applications</a>
+                    <a href="#">Loan Details</a>
+                    <a href="#">Loan Document Upload</a>
+                    <a href="#">LUC UPLOADER</a>
+                    <a href="#">Post Collection Mistatch Entry</a>
+                    <a href="#">SCV UPLOADER</a>
+
+
+                </div>
+            </div>
+
+            <div class="item"><a class="sub-btn">Reports</a>
+                <div class="sub-menu">
+                    <a href="#">Branch Summary Report</a>
+                    <a href="#">Branchwise PAR</a>
+                    <a href="#">CV Submission Report</a>
+                    <a href="#">CSO Performance Report</a>
+                    <a href="#">Cash Drop Report</a>
+                    <a href="#">Cashless Disbursement Report</a>
+                    <a href="#">Centre Meeting Report</a>
+                    <a href="#">Centre Summary Report</a>
+                    <a href="#">Centre Wise PAR</a>
+                    <a href="#">Clientwise PAR Report</a>
+                    <a href="#">Collection Details</a>
+                    <a href="#">Credit Bureau Report</a>
+                    <a href="#">Delinquence Report</a>
+                    <a href="#">Demand Details Reports</a>
+                    <a href="#">Fund Demand Report</a>
+                    <a href="#">Group Loan Application Report</a>
+                    <a href="#">HSBC Autodebit Transaction Report</a>
+                    <a href="#">HSBC registration Execution Report</a>
+                    <a href="#">Insurance Report</a>
+                    <a href="#">Loan Summary Report</a>
+                    <a href="#">Pending Centre Collection Report</a>
+                    <a href="#">Today Overdue Loan Report</a>
+                    <a href="#">WriteOff Case Report</a>
+                </div>
+            </div>
+            <div class="item"><a href="{% url 'signin' %}" class="sub-btn logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>

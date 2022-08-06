@@ -1,0 +1,493 @@
+{% include "header.html" %}
+<link rel="stylesheet" href="../static/css/DayClose.css">
+
+<div class="container1">
+    <h1>Branch Day Close</h1>
+    <form action="">
+        <fieldset>
+            <div>
+
+                <label for="region">Branch</label><br>
+                <select id="region" name="region">
+                    <option value="option1">option1</option>
+                    <option value="option2">option2</option>
+                    <option value="option3">option3</option>
+                    <option value="option4">option4</option>
+                  </select>
+                <button type="button" class="button">Fetch</button>
+
+            </div>
+
+            <div>
+
+                <label for="dateRange">Date Range</label><br>
+                <input type="date" id="dateRange" name="dateRange">
+
+
+            </div>
+
+            <div>
+
+                <label for="closingAmount">Closing Amount</label><br>
+                <input type="number" id="closingAmount" name="closingAmount">
+
+            </div>
+
+            <div>
+
+                <label for="accountBalance">Account Balance</label><br>
+                <input type="number" id="accountBalance" name="accountBalance">
+
+            </div>
+
+            <div>
+
+                <label for="cashDifference">Remark for cash difference</label><br>
+                <input type="number" id="cashDifference" name="cashDifference">
+                <button type="button" class="button">Submit</button>
+            </div>
+            <!-- <div>
+                
+                <label for="center">Center</label><br>
+                <select id="center" name="center" >
+                    <option value="option1">option1</option>
+                    <option value="option2">option2</option>
+                    <option value="option3">option3</option>
+                    <option value="option4">option4</option>
+                  </select>
+            
+            </div>
+
+            <div>
+                
+                <label for="loanType">Loan Type</label><br>
+                <select id="loanType" name="loanType" >
+                    <option value="option1">option1</option>
+                    <option value="option2">option2</option>
+                    <option value="option3">option3</option>
+                    <option value="option4">option4</option>
+                  </select>
+                  <button type="button" class="button">Fetch</button>
+            
+            </div>
+         
+            <div>
+                
+                <label for="creditBureau">Credit Bureau</label><br>
+                <select id="creditBureau" name="creditBureau" >
+                    <option value="option1">option1</option>
+                    <option value="option2">option2</option>
+                    <option value="option3">option3</option>
+                    <option value="option4">option4</option>
+                  </select>
+                  <button type="button" class="button">Credit Bureau Check</button>
+            
+            </div>
+
+            
+
+            <div>
+                
+                <label for="AdhaarCardNumber">Adhaar Card Number</label><br>
+                <input type="number" id="AdhaarCardNumber" name="AdhaarCardNumber">
+                
+            </div>
+
+            <div>
+                
+                <label for="applicationNumber">Application Number</label><br>
+                <input type="number" id="applicationNumber" name="applicationNumber">
+                
+                
+            </div> -->
+
+
+
+
+        </fieldset>
+
+    </form>
+
+
+    <!-- second div -->
+    <div class="second">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#" id="firstElement">Column</a>
+            <!-- <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a> -->
+
+            <label class="container">Action
+              <input type="checkbox" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Region
+              <input type="checkbox" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Branch
+              <input type="checkbox" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Branch Manager
+              <input type="checkbox" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Branch Day Close Date
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">Cash Date
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">Cash Balance
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">Branch Cash
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">Cash Differnce
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">Remark for cash mismatch
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">2000 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">1000 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">500 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">100 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">20 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">10 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">5 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">2 (note)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">20 (coin)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">10 (coin)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">5 (coin)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">2 (coin)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            <label class="container">1 (coin)
+                <input type="checkbox" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+
+        </div>
+
+        <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+        <fieldset>
+            <div>
+
+                <button type="button" class="button1" onclick="openNav()">Edit Table</button>
+                <!-- <a href="addcross.html"><button type="button" class="button1">ADD CROSS SELL CASH SELL</button></a> -->
+                <button type="button" class="button1">Export all data as csv</button>
+                <button type="button" class="button1">Export visible data as csv</button>
+                <button type="button" class="button1">Export all data as pdf</button>
+                <button type="button" class="button1">Export visible data as pdf</button>
+            </div>
+        </fieldset>
+
+        <!-- table -->
+        <div style="overflow-x:auto;" id="table">
+            <table>
+                <tr>
+                    <th>Action</th>
+                    <th>Region</th>
+                    <th>Branch</th>
+                    <th>Branch Manager</th>
+                    <th>Branch Day Close Date</th>
+                    <th>Cash Date</th>
+                    <th>Cash Balance</th>
+                    <th>Branch Cash</th>
+                    <th>Cash Differnce</th>
+                    <th>Remark for cash mismatch</th>
+                    <th>2000 (note)</th>
+                    <th>1000 (note)</th>
+                    <th>500 (note)</th>
+                    <th>100 (note)</th>
+                    <th>20 (note)</th>
+                    <th>10 (note)</th>
+                    <th>5 (note)</th>
+                    <th>2 (note)</th>
+                    <th>20 (coin)</th>
+                    <th>10 (coin)</th>
+                    <th>5 (coin)</th>
+                    <th>2 (coin)</th>
+                    <th>1 (coin)</th>
+
+
+
+
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+    function openSlideMenu()
+    {
+        document.getElementById('side-menu').style.width = '250px';
+        // document.getElementById('main').style.marginLeft = '250px';
+
+    }
+
+    function closeSlideMenu()
+    {
+        document.getElementById('side-menu').style.width = '0';
+        // document.getElementById('main').style.marginLeft = '0';
+
+    }
+</script> -->
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById('table').style.marginLeft = '250px';
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById('table').style.marginLeft = '0';
+    }
+</script>
+
+
+
+{% include "footer.html" %}
