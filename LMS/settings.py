@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-i71ux30xn_r&oor*q9pf7je+@c(_wxi9v4znobdw^n+g22$iww"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,12 +78,7 @@ WSGI_APPLICATION = "LMS.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "LMS",
-        "USER": "root",
-        "PASSWORD": "kailash",
-        "HOST": "localhost",  # Or an IP Address that your DB is hosted on
-        "PORT": "3306",
+       ,
     }
 }
 
