@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">
-    <title>Loan Management Form</title>
-
-</head>
-
-<body>
-
-    <div class="container">
-        <div class="row content d-flex justify-content-center align-items-center">
-            <div class="login-page-container">
-                <div class="box shadow-lg bg-white p-4 border border-dark">
-                    <div class="mb-4 text-center fs-1">Region Fields</div>
-                    {% for abc in dest1 %}
-                    <div style="font-size: 18px; font-weight: 500; border: solid rgb(194, 26, 26) 0.1rem; padding: 10px; border-radius: 10px;">
-                        <p>Resion: <span>{{abc.region_name}}</span></p>
-                        <p>Created By: <span>{{abc.created_by}}</span></p>
-                        <p>Created Date: <span>{{abc.created_date}}</span></p>
-                    </div>
-                    <hr> {% endfor %}
-                    <div>
-                        <a href="{% url 'region' %} "><button class="btn btn-primary ">Add Another Region</button></a>
-                        <a href="{% url 'desbord' %} "><button class="btn btn-success ">Go to Homepage</button></a>
-                    </div>
-                </div>
-            </div>
+{% include "header.html" %}
+<div class="container1">
+    <h2>List of Regions</h2>
+    <fieldset>
+        {% for region in regions %}
+        <div>
+            <p>Resion: <span>{{region.region}}</span></p>
+            <p>Created By: <span>{{region.created_by}}</span></p>
+            <p>Created Date: <span>{{region.created_date}}</span></p>
         </div>
-    </div>
-    <script src="../js/script.js "></script>
-</body>
-
-</html>
+        {% endfor %}
+        <div>
+            <a href="{% url 'region' %} "><button class="button1">Add Another Region</button></a>
+            <a href="{% url 'desbord' %} "><button class="button1">Go to Homepage</button></a>
+        </div>
+    </fieldset>
+</div>
+{% include "footer.html" %}

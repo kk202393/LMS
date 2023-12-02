@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import datetime
 import os
+import dotenv
 
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-i71ux30xn_r&oor*q9pf7je+@c(_wxi9v4znobdw^n+g22$iww"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "LOAN",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "LMS.urls"
+
+CORS_ALLOW_HEADERS = "*"
 
 TEMPLATES = [
     {
@@ -79,12 +86,14 @@ WSGI_APPLICATION = "LMS.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "LMS",
-        "USER": "root",
-        "PASSWORD": "kailash",
-        "HOST": "localhost",  # Or an IP Address that your DB is hosted on
+        "NAME": os.environ["DATABASE_NAME"],  # database table name
+        "HOST": os.environ[
+            "DATABASE_HOST"
+        ],  # Or an IP Address that your DB is hosted on
+        "USER": os.environ["DATABASE_USER"],  # databases user name
+        "PASSWORD": os.environ["DATABASE_PASSWORD"],
         "PORT": "3306",
-    }
+    },
 }
 
 
@@ -112,24 +121,52 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Asia/kolkata"
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = "static/"
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+DATE_INPUT_FORMATS = ["%d/%m/%Y"]
 
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+
+
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
+    STATICFILES_STORAGE = os.environ["STATICFILES_STORAGE"]
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+    AWS_FILE_EXPIRE = os.environ["AWS_FILE_EXPIRE"]
+    AWS_PRELOAD_METADATA = os.environ["AWS_PRELOAD_METADATA"]
+    AWS_QUERYSTRING_AUTH = os.environ["AWS_QUERYSTRING_AUTH"]
+    AWS_DEFAULT_ACL = os.environ["AWS_DEFAULT_ACL"]
+    AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+    AWS_S3_FILE_OVERWRITE = os.environ["AWS_S3_FILE_OVERWRITE"]
+    AWS_S3_REGION_NAME = os.environ["AWS_S3_REGION_NAME"]
+    AWS_S3_SIGNATURE_VERSION = os.environ["AWS_S3_SIGNATURE_VERSION"]
+    DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGES"]
+else:
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+    STATIC_URL = "/static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+    # STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+    # Default primary key field type
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+    DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+    # STATICFILES_DIRS = [BASE_DIR / "static"]

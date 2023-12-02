@@ -1,40 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">
-    <title>Loan Management Form</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
-</head>
-
-<body>
-
-    <div class="container">
-        <div class="row content d-flex justify-content-center align-items-center">
-            <div class="login-page-container">
-                <div class="box shadow-lg bg-white p-4 border border-dark">
-                    <div class="mb-4 text-center fs-1">Region creation form </div>
-                    <form class="mb-3" method="POST" action="">
-                        {% csrf_token %}
-                        <div class="frm">
-                            {{form.as_p}}
-                        </div>
-                        <div class="d-grid gap-2 mb-3">
-                            <button type="submit" class="btn btn-dark btn-lg border-0 rounded-0">Create Region</button>
-                            <a style="font-size: 20px; text-decoration: none; color: red; " href="{% url 'desbord' %}">Go to Homepage</a>
-                        </div>
-                    </form>
-                </div>
+{% include "header.html" %}
+<div class="container1">
+    <h2>Create Region</h2>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {% for fm in form %}
+            <div>
+                {{fm.label_tag}}{{fm}}
             </div>
-        </div>
-    </div>
-    <script src="../js/script.js"></script>
-</body>
-
-</html>
+            {% endfor %}
+            <input type="submit" value="Submit" class="button1">
+            <!-- <div style="color: red;">
+                {% if messages %} {% for message in messages %} {{message}}{% endfor %}{% endif%}
+            </div> -->
+        </fieldset>
+    </form>
+</div>
+{% include "footer.html" %}

@@ -1,4 +1,10 @@
+{% if user.is_superuser %}
 {% include "header.html" %}
+{% elif role.name == "Branch Manager" %}
+{% include "headerBranchManager.html" %}
+{% else %}
+{% include "headerAgent.html" %}
+{% endif %}
 <div class="container1">
     <h1>Cross Sell Cash Sell</h1>
     <form action="">

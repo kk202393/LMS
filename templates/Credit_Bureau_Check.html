@@ -1,4 +1,10 @@
+{% if user.is_superuser %}
 {% include "header.html" %}
+{% elif role.name == "Branch Manager" %}
+{% include "headerBranchManager.html" %}
+{% else %}
+{% include "headerAgent.html" %}
+{% endif %}
 <link rel="stylesheet" href="../static/css/Credit.css">
 
 <div class="container1">

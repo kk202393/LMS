@@ -1,18 +1,15 @@
-{% include "headerAgent.html" %}
-<div style="justify-content:center">
-    <form action="" method="POST">
+{% include "header.html" %}
+<div class="container1">
+    <form action="" method="POST" novalidate>
         {% csrf_token %}
-
-        <div class="form-control">{{form.as_p}}</div>
+        <div class="">{{form.as_p}}</div>
         <label>Installment Amount</label>
         <input type="number" value="{{finalAmount}}">
         <br>
         <br>
-        <button class="button1" type="submit">submit</button>
-        <br>
+        <span><button class="button1" type="submit">submit</button>
+            <!-- <button class="button1" type="reset">Reset</button></span> -->
+            <br>
     </form>
-
-
 </div>
-
 <br> {% include "footer.html" %}
