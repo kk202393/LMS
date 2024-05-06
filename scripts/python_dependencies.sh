@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-virtualenv /home/ubuntu/env
+virtualenv /home/ubuntu/LMS/env
 source /home/ubuntu/env/bin/activate
 pip install --upgrade setuptools wheel 
 sudo apt-get install libmysqlclient-dev
