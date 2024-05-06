@@ -1,0 +1,187 @@
+{% if user.is_superuser %}
+{% include "header.html" %}
+{% elif role.name == "Branch Manager" %}
+{% include "headerBranchManager.html" %}
+{% else %}
+{% include "headerAgent.html" %}
+{% endif %}
+<div class="container1">
+  <h1>Loan Summary Report</h1>
+  <form action="#" id="loanDetailsForm" method="POST">
+    {% csrf_token %}
+    <fieldset>
+      {% if not user.is_superuser %}
+      <div>
+        <label for="branch">Branch</label><br />
+        <select id="branch" name="branch">
+          <option value="">--Select--</option>
+          <option value="{{managerBranch.branchName.id}}">{{managerBranch.branchName.branch_Name}}</option>
+        </select>
+      </div>
+      {% else %}
+      <div>
+        <label for="region">Region</label><br />
+        <select id="region" name="region">
+          <option value="">--Select--</option>
+          {% for Region_name in Region %}
+          <option value="{{Region_name.id}}">{{Region_name.region}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label for="branch">Branch</label><br />
+        <select id="branch" name="branch">
+        </select>
+      </div>
+      {% endif %}
+      <div style="display: none;">
+        <input type="hidden" id="centerID" name="centerID">
+        <!-- <label for="center">CenterId</label><br /> -->
+        <select id="center" name="center">
+        </select>
+      </div>
+      <!-- <div class="select-wrapper">
+        <label for="selectInput">CenterId</label><br />
+        <input type="text" id="selectInput" class="select-input" placeholder="Select an option">
+        <div id="selectDropdown" class="select-dropdown"></div>
+      </div> -->
+      <div>
+        <label for="applicationFromDate">Disbursement From Date</label><br />
+        <input type="date" name="applicationFromDate" id="applicationFromDate">
+
+      </div>
+      <div>
+        <label for="applicationToDate">Disbursement To Date</label><br />
+        <input type="date" name="applicationToDate" id="applicationToDate">
+        <button type="submit" class="button">Fetch</button>
+        <button type="reset" class="button">Reset</button>
+        <button class="button" onclick="downloadTableAsCSV()">Download as CSV</button>
+      </div>
+    </fieldset>
+  </form>
+  <!-- second div -->
+  <!-- table -->
+  <div style="overflow-x: auto" id="table">
+    <table id="myTable">
+      <tr>
+        <th>Sr No.</th>
+        <th>Customer Id</th>
+        <th>Loan Id</th>
+        <th>Customer Name</th>
+        <th>F/s Name</th>
+        <th>Nominee Name</th>
+        <th>Nominee Relation</th>
+        <th>Gender</th>
+        <th>Mobile No.</th>
+        <th>Region Name</th>
+        <th>Branch Name</th>
+        <th>Center Id</th>
+        <th>Disbursement Date</th>
+        <th>Product Id</th>
+        <th>Loan Amount</th>
+        <th>Total Principal Amount</th>
+        <th>Total Principal O/S</th>
+        <th>Total Intrest</th>
+        <th>Total Intrest O/S</th>
+        <th>Total Installment</th>
+        <th>Installment O/S</th>
+        <th>Intrest Rate</th>
+        <th>LPC</th>
+        <th>LPF</th>
+        <th>Re-Pay Frequancy</th>
+        <th>Aadhar Card No.</th>
+        <th>Voter Id</th>
+        <th>Address</th>
+        <th>Address Line 1</th>
+        <th>Address Line 2</th>
+        <th>Address Line 3</th>
+        <th>Village Name</th>
+        <th>Pincode</th>
+        <th>Caste</th>
+        <th>Religion Name</th>
+        <th>Bank Name</th>
+        <th>Bank Account No.</th>
+        <th>CSO ID</th>
+        <th>CSO Name</th>
+      </tr>
+      {% for Cust_data in customer_data %}
+      <tr>
+        <td>{{forloop.counter}}
+        </td>
+        <td>{{Cust_data.loandata.customerId}}</td>
+        <td>{{Cust_data.loandata.loanId}}</td>
+        <td>{{Cust_data.FirstName}} {% if Cust_data.LastName != "None" %}{{Cust_data.LastName}}{% endif %}</td>
+        <td>{{Cust_data.FSName}}</td>
+        <td>{{Cust_data.CoInsurerName}}</td>
+        <td>{{Cust_data.CoInsurerRelation}}</td>
+        <td>{{Cust_data.Gender.GENDER_value}}</td>
+        <td>{{Cust_data.PhoneNumber}}</td>
+        <td>{{Cust_data.BranchName.branchName.region.region}}</td>
+        <td>{{Cust_data.BranchName.branchName.branch_Name}}</td>
+        <td>{{Cust_data.CenterId.center_Id}}-{{Cust_data.CenterId.center_name}}</td>
+        <td>{{Cust_data.Disbursement_Date |date:"m-d-Y"}}</td>
+        <td>{{Cust_data.Product}}</td>
+        <td>{{Cust_data.LoanAmount}}</td>
+        <td>{{Cust_data.LoanAmount}}</td>
+        <td>{% if Cust_data.lastPaidEmiData == None %} {{Cust_data.LoanAmount }} {% else %}
+          {{Cust_data.lastPaidEmiData.outstandingPrincipal | floatformat:0 }} {% endif %}</td>
+        <td>{{Cust_data.intrestCalculation.totalIntrestAmount | floatformat:0 }}</td>
+        <td>{{Cust_data.intrestCalculation.totalOSIntrestAmount | floatformat:0 }}</td>
+        <td>{{Cust_data.totalEmiData|length}}</td>
+        <td>{{Cust_data.intrestCalculation.OSInstallments}}</td>
+        <td>{{Cust_data.ProductCategory.InterestRate}}</td>
+        <td>{{Cust_data.LPC |floatformat:0}}</td>
+        <td>{{Cust_data.LPF|floatformat:0}}</td>
+        <td>{{Cust_data.Product.RepayFrequency}}</td>
+        <td>{{Cust_data.Aadhaar}}</td>
+        <td>{{Cust_data.VoterCard}}</td>
+        <td>{{Cust_data.AddressLine1}}</td>
+        <td>{{Cust_data.AddressLine1}}</td>
+        <td>{{Cust_data.AddressLine2}}</td>
+        <td>{{Cust_data.AddressLine3}}</td>
+        <td>{{Cust_data.Village}}</td>
+        <td>{{Cust_data.Pincode}}</td>
+        <td>{{Cust_data.Caste.CAST_value}}</td>
+        <td>{{Cust_data.Religion.Religion_value}}</td>
+        <td>{{Cust_data.BankName.BankName_value}}</td>
+        <td>{{Cust_data.BankAccountNo}}</td>
+        <td>{{Cust_data.CenterId.agents_Name.username}}</td>
+        <td>{{Cust_data.CenterId.agents_Name.first_name}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+</div>
+<script>
+
+  function downloadTableAsCSV() {
+    var table = document.getElementById("myTable");
+    var rows = table.rows;
+    var csvContent = "";
+
+    // Loop through the rows and cells
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i].cells;
+
+      for (var j = 0; j < row.length; j++) {
+        csvContent += row[j].innerText + ",";
+      }
+      csvContent += "\n"; // Add newline at the end of each row
+    }
+
+    // Create a blob and initiate a download
+    var blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    var link = document.createElement("a");
+    if (link.download !== undefined) {
+      var url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", "loan_summary_report.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+</script>
+{% include "footer.html" %}
