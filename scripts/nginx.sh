@@ -8,6 +8,6 @@ sudo cp /home/ubuntu/LMS/nginx/nginx.conf /etc/nginx/sites-available/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 #sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled
 #sudo nginx -t
-sudo gpasswd -a www-data ubuntu
+# sudo gpasswd -a www-data ubuntu
 sudo systemctl restart nginx
 
